@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  app:
+    image: 443545817539.dkr.ecr.us-east-1.amazonaws.com/staging.monii.customer.app:latest
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    env_file:
+      - .env
+    environment:
+      BASE_URL: ${BASE_URL}
+    ports:
+      - "80:3001"
+      - "443:3001"
